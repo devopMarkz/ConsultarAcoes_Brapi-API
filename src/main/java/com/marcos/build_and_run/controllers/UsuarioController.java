@@ -1,6 +1,7 @@
 package com.marcos.build_and_run.controllers;
 
 import com.marcos.build_and_run.dto.ContaDto;
+import com.marcos.build_and_run.dto.ContaReponseDto;
 import com.marcos.build_and_run.dto.UsuarioDto;
 import com.marcos.build_and_run.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,12 @@ public class UsuarioController {
                 .buildAndExpand(id)
                 .toUri();
         return ResponseEntity.created(location).build();
+    }
+
+    @GetMapping("/{id}/contas")
+    public ResponseEntity<List<ContaDto>> listarContas(@PathVariable Long id){
+        var contas = userService.listarContas(id);
+        return ResponseEntity.ok(contas);
     }
 
     @GetMapping("/{id}")

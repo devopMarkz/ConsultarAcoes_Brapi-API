@@ -81,4 +81,13 @@ public class UserService {
         EnderecoDeCobranca enderecoDeCobranca = new EnderecoDeCobranca(null, contaCriada, "Rua do Cobre", 10);
         enderecoDeCobrancaRepository.save(enderecoDeCobranca);
     }
+
+    @Transactional(readOnly = true)
+    public List<ContaDto> listarContas(Long id) {
+        var usuario = usuarioRepository.findUsuarioByIdWithConta(id);
+        return usuario.getContas()
+                .stream()
+                .map(conta -> new ContaDto(conta.getId(), conta.getDescription()))
+                .toList();
+    }
 }
