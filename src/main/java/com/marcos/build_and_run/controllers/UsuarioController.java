@@ -39,8 +39,8 @@ public class UsuarioController {
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<Void> update(@PathVariable Long id ,@RequestBody UsuarioDto usuarioDto){
-        userService.update(id, usuarioDto);
+    public ResponseEntity<Void> updateById(@PathVariable Long id ,@RequestBody UsuarioDto usuarioDto){
+        userService.updateUserById(id, usuarioDto);
         return ResponseEntity.noContent().build();
     }
 

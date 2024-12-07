@@ -43,7 +43,7 @@ public class UserService {
     }
 
     @Transactional
-    public void update(Long id, UsuarioDto usuarioDto){
+    public void updateUserById(Long id, UsuarioDto usuarioDto){
         if(usuarioRepository.existsById(id)) {
             Usuario usuario = usuarioRepository.getReferenceById(id);
             usuario.setUsername(usuarioDto.username());
