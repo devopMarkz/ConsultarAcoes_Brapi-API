@@ -1,5 +1,6 @@
 package com.marcos.build_and_run.controllers;
 
+import com.marcos.build_and_run.dto.ContaDto;
 import com.marcos.build_and_run.dto.UsuarioDto;
 import com.marcos.build_and_run.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,6 +49,12 @@ public class UsuarioController {
     public ResponseEntity<Void> deleteById(@PathVariable Long id){
         userService.deleteById(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @PostMapping("/{id}/contas")
+    public ResponseEntity<Void> criarConta(@PathVariable("id") Long id, @RequestBody ContaDto contaDto){
+        userService.criarConta(id, contaDto);
+        return ResponseEntity.ok().build();
     }
 
 }

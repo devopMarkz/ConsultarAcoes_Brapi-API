@@ -21,7 +21,7 @@ public class Conta {
     @Column(columnDefinition = "TEXT")
     private String description;
 
-    @OneToOne(mappedBy = "conta")
+    @OneToOne(mappedBy = "conta", cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn
     private EnderecoDeCobranca enderecoDeCobranca;
 
@@ -31,10 +31,11 @@ public class Conta {
     public Conta() {
     }
 
-    public Conta(Long id, String description, Usuario usuario) {
+    public Conta(Long id, Usuario usuario, String description, EnderecoDeCobranca enderecoDeCobranca) {
         this.id = id;
-        this.description = description;
         this.usuario = usuario;
+        this.description = description;
+        this.enderecoDeCobranca = enderecoDeCobranca;
     }
 
     public Long getId() {
