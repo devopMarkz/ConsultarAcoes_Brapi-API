@@ -31,10 +31,15 @@ public class UserService {
     }
 
     @Transactional(readOnly = true)
-    public List<UsuarioDto> getAll(){
+    public List<UsuarioDto> listUsers(){
         return usuarioRepository.findAll()
                 .stream()
                 .map(usuario -> new UsuarioDto(usuario.getId(), usuario.getUsername(), usuario.getEmail(), usuario.getPassword())).toList();
+    }
+
+    @Transactional
+    public void deleteById(Long id){
+        usuarioRepository.deleteById(id);
     }
 
 }

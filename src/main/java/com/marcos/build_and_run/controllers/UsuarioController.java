@@ -1,7 +1,6 @@
 package com.marcos.build_and_run.controllers;
 
 import com.marcos.build_and_run.dto.UsuarioDto;
-import com.marcos.build_and_run.entities.Usuario;
 import com.marcos.build_and_run.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -35,8 +34,14 @@ public class UsuarioController {
     }
 
     @GetMapping
-    public ResponseEntity<List<UsuarioDto>> getAll(){
-        return ResponseEntity.ok(userService.getAll());
+    public ResponseEntity<List<UsuarioDto>> listUsers(){
+        return ResponseEntity.ok(userService.listUsers());
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteById(@PathVariable Long id){
+        userService.deleteById(id);
+        return ResponseEntity.noContent().build();
     }
 
 }
