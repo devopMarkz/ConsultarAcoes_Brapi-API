@@ -38,6 +38,12 @@ public class UsuarioController {
         return ResponseEntity.ok(userService.listUsers());
     }
 
+    @PutMapping("{id}")
+    public ResponseEntity<Void> update(@PathVariable Long id ,@RequestBody UsuarioDto usuarioDto){
+        userService.update(id, usuarioDto);
+        return ResponseEntity.noContent().build();
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteById(@PathVariable Long id){
         userService.deleteById(id);

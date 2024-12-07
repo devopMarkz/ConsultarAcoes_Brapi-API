@@ -42,4 +42,15 @@ public class UserService {
         usuarioRepository.deleteById(id);
     }
 
+    @Transactional
+    public void update(Long id, UsuarioDto usuarioDto){
+        if(usuarioRepository.existsById(id)) {
+            Usuario usuario = usuarioRepository.getReferenceById(id);
+            usuario.setUsername(usuarioDto.username());
+            usuario.setEmail(usuarioDto.email() );
+            usuario.setPassword(usuarioDto.password());
+            usuarioRepository.save(usuario);
+        } else throw new UsuarioInexistenteException("Usuário de ID " + usuarioDto.id() + " inexistente.");
+    }
+
 }
