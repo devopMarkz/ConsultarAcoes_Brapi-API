@@ -1,9 +1,9 @@
 package com.marcos.build_and_run.controllers;
 
 import com.marcos.build_and_run.dto.ContaDto;
-import com.marcos.build_and_run.dto.ContaReponseDto;
 import com.marcos.build_and_run.dto.UsuarioDto;
 import com.marcos.build_and_run.services.UserService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +20,7 @@ public class UsuarioController {
     private UserService userService;
 
     @PostMapping
-    public ResponseEntity<Void> createUser(@RequestBody UsuarioDto createUsuarioDto){
+    public ResponseEntity<Void> createUser(@Valid @RequestBody UsuarioDto createUsuarioDto){
         Long id = userService.createUser(createUsuarioDto);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}")

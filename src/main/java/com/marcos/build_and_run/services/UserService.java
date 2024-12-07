@@ -32,7 +32,7 @@ public class UserService {
 
     @Transactional
     public Long createUser(UsuarioDto usuarioDto) {
-        var usuario = new Usuario(null, usuarioDto.username(), usuarioDto.email(), usuarioDto.password());
+        var usuario = new Usuario(null, usuarioDto.getUsername(), usuarioDto.getEmail(), usuarioDto.getPassword());
         var usuarioSalvo = usuarioRepository.save(usuario);
         return usuarioSalvo.getId();
     }
@@ -66,11 +66,11 @@ public class UserService {
     public void updateUserById(Long id, UsuarioDto usuarioDto) {
         if (usuarioRepository.existsById(id)) {
             Usuario usuario = usuarioRepository.getReferenceById(id);
-            usuario.setUsername(usuarioDto.username());
-            usuario.setEmail(usuarioDto.email());
-            usuario.setPassword(usuarioDto.password());
+            usuario.setUsername(usuarioDto.getUsername());
+            usuario.setEmail(usuarioDto.getEmail());
+            usuario.setPassword(usuarioDto.getPassword());
             usuarioRepository.save(usuario);
-        } else throw new UsuarioInexistenteException("Usuário de ID " + usuarioDto.id() + " inexistente.");
+        } else throw new UsuarioInexistenteException("Usuário de ID " + usuarioDto.getId() + " inexistente.");
     }
 
     @Transactional
