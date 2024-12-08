@@ -78,7 +78,7 @@ public class UserService {
         Usuario usuario = usuarioRepository.findById(id).orElseThrow(() -> new UsuarioInexistenteException("Usuário de ID " + id + " inexistente."));
         Conta conta = new Conta(null, usuario, contaDto.description(), null);
         Conta contaCriada = contaRepository.save(conta);
-        EnderecoDeCobranca enderecoDeCobranca = new EnderecoDeCobranca(null, contaCriada, "Rua do Cobre", 10);
+        EnderecoDeCobranca enderecoDeCobranca = new EnderecoDeCobranca(null, contaCriada, contaDto.rua(), contaDto.numero());
         enderecoDeCobrancaRepository.save(enderecoDeCobranca);
     }
 
@@ -87,7 +87,7 @@ public class UserService {
         var usuario = usuarioRepository.findUsuarioByIdWithConta(id);
         return usuario.getContas()
                 .stream()
-                .map(conta -> new ContaDto(conta.getId(), conta.getDescription()))
+                .map(conta -> new ContaDto(conta.getId(), conta.getDescription(), conta.getEnderecoDeCobranca().getRua(), conta.getEnderecoDeCobranca().getNumero()))
                 .toList();
     }
 }
