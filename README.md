@@ -28,7 +28,7 @@ Este projeto é uma aplicação desenvolvida para consultar os valores das açõ
    ```bash
    git clone https://github.com/seu-usuario/consulta-acoes-brapi.git
 
-2. Faça login no site https://brapi.dev/, acesse a tela de Dashboard, gere um token e configure ele nas suas variáveis de ambiente com o nome TOKEN. 
+2. Faça login no site https://brapi.dev/, acesse a tela de Dashboard, gere um token e adicione ele nas suas variáveis de ambiente com o nome TOKEN. 
 
 ## 📈 Próximos Passos  
 
