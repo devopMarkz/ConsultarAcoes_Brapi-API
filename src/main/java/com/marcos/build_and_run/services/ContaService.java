@@ -46,11 +46,11 @@ public class ContaService {
         contaAcaoRepository.save(entity);
     }
 
-        @Transactional
-        public List<ContaAcaoResponseDto> listarAcoes(Long id) {
-            Conta conta = contaRepository.findById(id).orElseThrow(() -> new ContaInexistenteException("Conta de id " + id + " inexistente."));
-            return conta.getContaAcoes().stream().map(as -> new ContaAcaoResponseDto(as.getAcao().getId(), as.getAcao().getTicker(), as.getQuantity(), getTotal(as.getQuantity() ,as.getAcao().getTicker()))).toList();
-        }
+    @Transactional
+    public List<ContaAcaoResponseDto> listarAcoes(Long id) {
+        Conta conta = contaRepository.findById(id).orElseThrow(() -> new ContaInexistenteException("Conta de id " + id + " inexistente."));
+        return conta.getContaAcoes().stream().map(as -> new ContaAcaoResponseDto(as.getAcao().getId(), as.getAcao().getTicker(), as.getQuantity(), getTotal(as.getQuantity(), as.getAcao().getTicker()))).toList();
+    }
 
     private Double getTotal(Integer quantity, String ticker) {
         var response = brapiClient.getQuote(TOKEN, ticker);
