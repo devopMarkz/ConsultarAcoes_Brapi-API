@@ -3,7 +3,7 @@ package com.marcos.build_and_run.entities;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "tb_conta_estoque")
+@Table(name = "tb_conta_acao")
 public class ContaAcao {
 
     @EmbeddedId
