@@ -16,6 +16,7 @@ public class Acao {
     @Column(columnDefinition = "TEXT")
     private String description;
 
+    @Column(unique = true)
     private String ticker;
 
     public Acao() {
