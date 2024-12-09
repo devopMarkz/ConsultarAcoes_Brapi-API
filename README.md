@@ -1,5 +1,4 @@
-# 📊 Consulta de Ações com API BRAPI e FeignClient  
-
+# 📊 Consulta de Ações com API BRAPI
 Este projeto é uma aplicação desenvolvida para consultar os valores das ações de empresas em tempo real, utilizando a **API da BRAPI** e o **FeignClient** do Spring Boot. Foi projetada para ser simples, eficiente e segura, com configurações que seguem boas práticas de desenvolvimento.
 
 ---
